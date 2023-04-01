@@ -37,8 +37,9 @@
     </div>
 
 
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1280 height=720></canvas>
+    <div id="unity-container" class="unity-desktop" style="width:1280px;height: 768px;">
+      <canvas id="unity-canvas" width=100% height=100% style="max-width: 100%;
+      height: auto;"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -106,11 +107,13 @@
       // config.matchWebGLToCanvasSize = false;
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
+        //container.className = "unity-mobile";
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
+        //config.devicePixelRatio = 1;
         unityShowBanner('WebGL works wierd in Mobile Device');
+        canvas.style.width = "1280px";
+        canvas.style.height = "720px";
       } else {
         canvas.style.width = "1280px";
         canvas.style.height = "720px";
