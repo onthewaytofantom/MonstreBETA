@@ -7,10 +7,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  <body  style="background-color: rgb(15, 15, 15); color: goldenrod; ">
+  <body style="background-color: rgb(15, 15, 15); color: goldenrod; ">
     
     <div id="tutorial" style="width:50px">
-      <p>    This is Alpha Version v1.0.11. If you encounter any bugs, you can revert to the Text UI at(<a href="https://onthewaytofantom.github.io/MonstreTest/"  target="_blank">https://onthewaytofantom.github.io/MonstreTest/</a>). When encounter bug, refresh webpage. 
+      <p>    This is Alpha Version v1.0.10. For more stable experience, please use Text Base UI. When encounter bug, refresh webpage. https://onthewaytofantom.github.io/MonstreTest/
         <br>
         <br>    New Player Guide:
         <br>    1. Mint an Egg 
@@ -37,7 +37,7 @@
     </div>
 
 
-    <div id="unity-container" class="unity-desktop">
+    <div id="unity-container" class="unity-desktop" >
       <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -111,6 +111,8 @@
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
         unityShowBanner('WebGL works wierd in Mobile Device');
+       
+      
       } else {
         canvas.style.width = "1280px";
         canvas.style.height = "720px";
@@ -138,16 +140,16 @@
       // Get references to the target elements
       const tutorialDiv = document.getElementById('tutorial');
       const unityContainer = document.getElementById('unity-canvas');
-
+      
       // Calculate the width of the browser viewport
       const viewportWidth = window.innerWidth;
-
+      
       // Get the width of the unity container
       const unityContainerWidth = unityContainer.offsetWidth;
-
+      
       // Calculate the width of the target div
       const targetDivWidth = (viewportWidth - unityContainerWidth)/2;
-
+      
       // Set the width of the target div
       tutorialDiv.style.width = `${targetDivWidth}px`;
     </script>
