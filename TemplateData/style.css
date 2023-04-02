@@ -2,7 +2,6 @@
 body {
     padding: 0;
     margin: 0;
-    max-width: 100%;
     overflow-x: hidden;
   }
   
@@ -13,31 +12,45 @@ body {
   }
   
   
-
-/* Styles for devices with a device pixel ratio of 2 or higher */
+  #unity-canvas {
+    width: 1280px;
+    height: 720px;
+ 
+}
+#unity-container {
+    width: 1280px;
+    height: 720px;
+  
+}
+.unity-mobile #unity-canvas {
+    width: 1280px;
+    height: 720px;
+}
+#unity-container.unity-mobile {
+    width: 1280px;
+    height: 720px;
+}
+/* Styles for devices with a device pixel ratio of 2 or higher 
 @media (min-width: 992px) {
     #unity-canvas {
         width: 1280px;
-        height: 768px;
-      max-width: 1280px;
-      max-height: 768px;
+        height: 720px;
+     
     }
     #unity-container {
         width: 1280px;
-        height: 768px;
-      max-width: 100%;
+        height: 720px;
+      
     }
     .unity-mobile #unity-canvas {
         width: 1280px;
-        height: 768px;
-      max-width: 100%;
+        height: 720px;
     }
     #unity-container.unity-mobile {
         width: 1280px;
-        height: 768px;
-      max-width: 100%;
+        height: 720px;
     }
-}
+}*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
        only screen and (   min--moz-device-pixel-ratio: 2),
        only screen and (     -o-min-device-pixel-ratio: 2/1),
@@ -46,51 +59,22 @@ body {
        only screen and (                min-resolution: 2dppx) {
   #unity-canvas {
     width: 640px;
-    height: 384px;
+    height: 360px;
   }
   #unity-container {
     width: 640px;
-    height: 384px;
-    max-width: 100%;
+    height: 360px;
   }
   .unity-mobile #unity-canvas {
     width: 640px;
-    height: 384px;
-    max-width: 100%;
+    height: 360px;
   }
   #unity-container.unity-mobile {
     width: 640px;
-    height: 384px;
-    max-width: 100%;
+    height: 360px;
   }
 }
 
-/* Styles for devices with a maximum screen width of 1280px */
-/*
-@media (min-width: 992px) {
-  #unity-canvas {
-    width: 100%;
-    height: auto;
-    max-width: 1280px;
-    max-height: 768px;
-  }
-  #unity-container {
-    width: 1280px ;
-    height: auto;
-    max-width: 100%;
-  }
-  .unity-mobile #unity-canvas {
-    width: 1280px ;
-    height: auto;
-    max-width: 100%;
-  }
-  #unity-container.unity-mobile {
-    width: 1280px ;
-    height: auto;
-    max-width: 100%;
-  }
-}*/
-  
   #unity-loading-bar {
     position: absolute;
     left: 50%;
