@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <meta name="viewport" content="width=1280, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=1280, initial-scale=1">
+      
     <title>Unity WebGL Player | FantomMonstre</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script>
-      var siteWidth = 1280;
-      var scale = screen.width /siteWidth;
-
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'')
-    </script>
+    
   </head>
   <body  style="background-color: rgb(15, 15, 15); color: goldenrod; ">
-    <meta name="viewport" content="width=1280, initial-scale=1">
-    <script>
-      var siteWidth = 1280;
-      var scale = screen.width /siteWidth;
-
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'')
-    </script>
     
+    <!--
     <div id="tutorial" style="width:50px">
       <p>    This is Alpha Version v1.0.12. If you encounter any bugs, you can revert to the Text UI at(<a href="https://onthewaytofantom.github.io/MonstreTest/"  target="_blank">https://onthewaytofantom.github.io/MonstreTest/</a>). When encounter bug, refresh webpage. 
         <br>
@@ -50,9 +39,9 @@
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please use TextUI to view the actual monstre species.
       </p>
     </div>
-
-    <div id="unity-container" class="unity-desktop" style="position: absolute;width:1280px;height:720px;">
-      <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} style="width: 100%; height: 100%"></canvas>
+-->
+    <div id="unity-container" class="unity-desktop" style="position: absolute;">
+      <canvas id="unity-canvas" ></canvas>
 
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -127,12 +116,12 @@
         //config.devicePixelRatio = 1;
         unityShowBanner('WebGL3 may exhibit inconsistent or unexpected behavior on certain mobile devices');
         
-        canvas.style.width = "1280px";
-        canvas.style.height = "720px";
+        //canvas.style.width = "1280px";
+        //canvas.style.height = "720px";
 
       } else {
-        canvas.style.width = "1280px";
-        canvas.style.height = "720px";
+        //canvas.style.width = "1280px";
+       //canvas.style.height = "720px";
       }
       loadingBar.style.display = "block";
 
@@ -153,6 +142,7 @@
       };
       document.body.appendChild(script);
     </script>
+    <!--
     <script>
       // Get references to the target elements
       const tutorialDiv = document.getElementById('tutorial');
@@ -169,6 +159,64 @@
 
       // Set the width of the target div
       tutorialDiv.style.width = `${targetDivWidth}px`;
+
+      // make sure set back to 1280 no matter what.
+      var canvas = document.getElementById("unity-canvas");
+      var desiredWidth = 1280;
+      var desiredHeight = 768;
+
+      function checkCanvasSize() {
+        if (canvas.width != desiredWidth || canvas.height != desiredHeight) {
+          canvas.width = desiredWidth;
+          canvas.height = desiredHeight;
+        }
+      }
+
+      var loadingBar = document.getElementById("unity-loading-bar");
+      loadingBar.addEventListener("animationstart", function() {
+        // Check canvas size every 100ms while loading
+        setInterval(checkCanvasSize, 100);
+      });
     </script>
+    <script>
+      window.onload = function() {
+        // Get the device pixel ratio
+        var dpr = window.devicePixelRatio || 1;
+    
+        // Set the width and height of the canvas element
+        var canvas = document.getElementById("unity-canvas");
+        canvas.width = 1280 / dpr;
+        canvas.height = 768 / dpr;
+      }
+    </script>
+    <script>
+      function adjustCanvasSize(canvas) {
+        const devicePixelRatio = window.devicePixelRatio || 1;
+        const backingStoreRatio = canvas.webkitBackingStorePixelRatio ||
+                                  canvas.mozBackingStorePixelRatio ||
+                                  canvas.msBackingStorePixelRatio ||
+                                  canvas.oBackingStorePixelRatio ||
+                                  canvas.backingStorePixelRatio || 1;
+        const ratio = devicePixelRatio / backingStoreRatio;
+        const canvasWidth = canvas.clientWidth * ratio;
+        const canvasHeight = canvas.clientHeight * ratio;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        canvas.style.width = canvas.clientWidth + "px";
+        canvas.style.height = canvas.clientHeight + "px";
+      }
+      
+      // Call adjustCanvasSize on window resize and orientation change
+      window.addEventListener("resize", function() {
+        adjustCanvasSize(document.getElementById("unity-canvas"));
+      });
+      window.addEventListener("orientationchange", function() {
+        adjustCanvasSize(document.getElementById("unity-canvas"));
+      });
+      
+      // Call adjustCanvasSize initially
+      adjustCanvasSize(document.getElementById("unity-canvas"));
+    </script>
+    -->
   </body>
 </html>
