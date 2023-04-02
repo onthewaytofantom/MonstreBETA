@@ -5,30 +5,34 @@ body {
     overflow-x: hidden;
   }
   
-  #unity-container.unity-desktop {
+  /*#unity-container.unity-desktop {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  
+  #unity-container.unity-mobile {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }*/
   
   #unity-canvas {
-    width: 1280px;
-    height: 720px;
+    width: 1420px;
+    height: 820px;
+    
  
 }
 #unity-container {
-    width: 1280px;
-    height: 720px;
+    text-align: center;
   
 }
 .unity-mobile #unity-canvas {
     width: 1280px;
-    height: 720px;
+    height: 764px;
+    
 }
 #unity-container.unity-mobile {
-    width: 1280px;
-    height: 720px;
+  
 }
 /* Styles for devices with a device pixel ratio of 2 or higher 
 @media (min-width: 992px) {
@@ -60,18 +64,18 @@ body {
   #unity-canvas {
     width: 640px;
     height: 360px;
+    
   }
   #unity-container {
-    width: 640px;
-    height: 360px;
+    text-align: left;
   }
   .unity-mobile #unity-canvas {
     width: 640px;
     height: 360px;
+    
   }
   #unity-container.unity-mobile {
-    width: 640px;
-    height: 360px;
+    
   }
 }
 
