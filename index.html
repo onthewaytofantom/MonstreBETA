@@ -41,7 +41,7 @@
       </p>
     </div>
   -->
-  
+  <div id="myDiv"style=" background-color: rgb(154, 134, 1);" ></div>
     <div id="main" class="unity-desktop" style="text-align: center; background-color: rgb(204, 134, 48); ">
       <canvas id="unity-canvas" style="border:1px solid #4d3b3b;"></canvas>
 
@@ -72,12 +72,66 @@
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
     
         mainDiv.style.textAlign = "justify";
+
+        const myDiv = document.getElementById('myDiv');
+        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio;
+
       } else {
         mainDiv.style.textAlign = "center";
+        
+        const minCanvasWidth = 1280;
+        const maxCanvasWidth = 1920;
+        const minCanvasHeight = 720;
+        const maxCanvasHeight = 1080;
+        // Get the width and height of the browser window
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // Calculate the maximum allowed width and height based on the limits
+        const maxWidth = Math.min(maxCanvasWidth, Math.max(minCanvasWidth, windowWidth));
+        const maxHeight = Math.min(maxCanvasHeight, Math.max(minCanvasHeight, windowHeight));
+
+        // Calculate the aspect ratio of the canvas
+        const canvasAspectRatio = mainCanvas.width / mainCanvas.height;
+
+        // Calculate the new width and height of the canvas while maintaining the aspect ratio
+        let newCanvasWidth = maxWidth;
+        let newCanvasHeight = maxHeight / canvasAspectRatio;
+        if (newCanvasHeight > maxHeight) {
+          newCanvasHeight = maxHeight;
+          newCanvasWidth = newCanvasHeight * canvasAspectRatio;
+        }
+
+        // Set the new width and height of the canvas
+        mainCanvas.style.width = maxWidth-177+'px';
+        mainCanvas.style.height = windowHeight-100+'px';
+        const myDiv = document.getElementById('myDiv');
+        myDiv.textContent = windowWidth+"x"+windowHeight;
       }
       
     </script>
+<script>
+function getMinWidth() {
+  const mediaQueryTest = document.getElementById('media-query-test');
+  if (!mediaQueryTest || !(mediaQueryTest instanceof Element)) {
+    // If mediaQueryTest is not an Element object or is null/undefined
+    // then return a default value or handle the error as appropriate
+    return 0;
+  }
+  const computedStyle = window.getComputedStyle(mediaQueryTest);
+  const minWidth = parseInt(computedStyle.width);
+  
 
+  console.log(minWidth);
+  console.log(mediaQueryTest);
+  console.log(computedStyle);
+  return minWidth;
+}
+
+
+
+
+</script>
 
     <script src="web3/index.js"></script>
     <script>
