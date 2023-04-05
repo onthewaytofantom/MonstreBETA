@@ -56,6 +56,7 @@
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">FantomMonstre</div>
+        <!--<button id="rotateButton">Rotate Canvas</button>-->
       </div>
     </div>
     <script>
@@ -130,6 +131,8 @@ function resize(){
         " DW:"+Heightoffset;
         myDiv.style.height = Heightoffset +'px';
 
+      //remove fullscreen mode for Mobile since the size will be wrong.
+      document.getElementById("unity-fullscreen-button").style.display = 'none';
 
 
 
@@ -170,26 +173,26 @@ function resize(){
     //setInterval(resize, 1000);  
     </script>
 <script>
-function getMinWidth() {
-  const mediaQueryTest = document.getElementById('media-query-test');
-  if (!mediaQueryTest || !(mediaQueryTest instanceof Element)) {
-    // If mediaQueryTest is not an Element object or is null/undefined
-    // then return a default value or handle the error as appropriate
-    return 0;
-  }
-  const computedStyle = window.getComputedStyle(mediaQueryTest);
-  const minWidth = parseInt(computedStyle.width);
-  
-
-  console.log(minWidth);
-  console.log(mediaQueryTest);
-  console.log(computedStyle);
-  return minWidth;
+/*
+var rotated = false;
+function rotateCanvas() {
+    var canvas = document.getElementById('main');
+    if (rotated == false) {
+      canvas.style.transform = "rotate(90deg)";
+      rotated = true;
+      // Adjust the canvas width and height to account for the rotation
+    canvas.width = canvas.offsetHeight;
+    canvas.height = canvas.offsetWidth;
+    } else {
+      canvas.style.transform = "rotate(0deg)";
+      rotated = false;
+    }
+    
 }
-
-
-
-
+document.getElementById("rotateButton").addEventListener("click", function() {
+    rotateCanvas();
+});
+*/
 </script>
 
     <script src="web3/index.js"></script>
@@ -220,7 +223,7 @@ function getMinWidth() {
           setTimeout(function() {
             warningBanner.removeChild(div);
             updateBannerVisibility();
-          }, 5000);
+          }, 2000);
         }
         updateBannerVisibility();
       }
