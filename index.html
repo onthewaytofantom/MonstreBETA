@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-      
+    <meta name="viewport" content="width=465, initial-scale=1">
     <title>Unity WebGL Player | FantomMonstre</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -41,9 +41,9 @@
       </p>
     </div>
   -->
-  <div id="myDiv"style=" background-color: rgb(154, 134, 1);" ></div>
-    <div id="main" class="unity-desktop" style="text-align: center; background-color: rgb(204, 134, 48); ">
-      <canvas id="unity-canvas" style="border:1px solid #4d3b3b;"></canvas>
+  <div id="myDiv"style=" background-color: rgb(154, 134, 1); text-align: left;" ></div>
+    <div id="main" class="unity-desktop" style="text-align: center; background-color: rgb(204, 134, 48); overflow-x: hidden;">
+      <canvas id="unity-canvas" style="border:1px solid #e61010;"></canvas>
 
       <div id="unity-loading-bar"style=" background-color: blue;">
         <div id="unity-logo"style=" background-color: white;"></div>
@@ -59,6 +59,7 @@
       </div>
     </div>
     <script>
+      var initwidth = window.innerWidth;
      //// var pixelRatio = window.devicePixelRatio || 1;
       var mainDiv = document.getElementById('main');
     //  mainDiv.style.width = 1280 / pixelRatio + 'px';
@@ -66,23 +67,73 @@
 
       var pixelRatio = window.devicePixelRatio || 1;
       var mainCanvas = document.getElementById('unity-canvas');
-      mainCanvas.style.width = 1280 / pixelRatio + 'px';
-      mainCanvas.style.height = 720 / pixelRatio + 'px';
-
+      mainCanvas.style.width = 1 / pixelRatio + 'px';
+      mainCanvas.style.height = 1 / pixelRatio + 'px';
+function resize(){
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-    
-        mainDiv.style.textAlign = "justify";
+        
+        /*
+        mainCanvas.style.position = "absolute";
+        mainCanvas.style.top = "50%";
+        const posi = (window.innerWidth - 720/ pixelRatio)/1;
+        mainCanvas.style.left = posi+'px';
+        mainCanvas.style.transform = "translate(-50%, -50%)";
+        */
+     //   if (document.body.offsetWidth >= 1280 || true) {
+     //     document.getElementById("main").style.textAlign = "center";
+     //   } else {
+          document.getElementById("main").style.textAlign = "center";
+      //    mainCanvas.style.position = "relative";
+      //    mainCanvas.style.left = Math.abs(((1280 - document.body.offsetWidth)/4)) + 'px';
+      //    mainCanvas.style.left = 70 + 'px';
+      //  }
+        const minCanvasWidth = 1280/ pixelRatio;
+        const maxCanvasWidth = 1280/ pixelRatio;
+        const minCanvasHeight = 720/ pixelRatio;
+        const maxCanvasHeight = 720/ pixelRatio;
+        // Get the width and height of the browser window
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // Calculate the maximum allowed width and height based on the limits
+        const maxWidth = Math.min(maxCanvasWidth, Math.max(minCanvasWidth, windowWidth));
+        const maxHeight = Math.min(maxCanvasHeight, Math.max(minCanvasHeight, windowHeight));
+
+        // Calculate the aspect ratio of the canvas
+        const canvasAspectRatio = mainCanvas.width / mainCanvas.height;
+
+        // Calculate the new width and height of the canvas while maintaining the aspect ratio
+        let newCanvasWidth = maxWidth;
+        let newCanvasHeight = maxHeight / canvasAspectRatio;
+        if (newCanvasHeight > maxHeight) {
+          newCanvasHeight = maxHeight;
+          newCanvasWidth = newCanvasHeight * canvasAspectRatio;
+        }
+        var WWIDTH = document.body.offsetWidth;
+        var HHEIGHT = WWIDTH/1.777778;
+        // Set the new width and height of the canvas
+        //body.style.width = 1280/ pixelRatio+'px';
+        mainCanvas.style.width = 1280/ pixelRatio+'px';
+        mainCanvas.style.height = 720/ pixelRatio+'px';
+        
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + 1280/ pixelRatio + 'px, initial-scale='+1);
+        document.body.style.zoom = (1280/ pixelRatio)/window.innerWidth*100 + "%";
 
         const myDiv = document.getElementById('myDiv');
-        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio;
+        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio+" body:"+ document.body.offsetWidth+
+        " DW:"+initwidth;
+        myDiv.style.height = (window.innerHeight-minCanvasHeight)/2/pixelRatio+'px';
+
+
+
 
       } else {
         mainDiv.style.textAlign = "center";
         
-        const minCanvasWidth = 1280;
-        const maxCanvasWidth = 1920;
-        const minCanvasHeight = 720;
-        const maxCanvasHeight = 1080;
+        const minCanvasWidth = 1280/ pixelRatio;
+        const maxCanvasWidth = 1920/ pixelRatio;
+        const minCanvasHeight = 720/ pixelRatio;
+        const maxCanvasHeight = 1080/ pixelRatio;
         // Get the width and height of the browser window
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
@@ -106,9 +157,11 @@
         mainCanvas.style.width = maxWidth-177+'px';
         mainCanvas.style.height = windowHeight-100+'px';
         const myDiv = document.getElementById('myDiv');
-        myDiv.textContent = windowWidth+"x"+windowHeight;
+        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio;
       }
-      
+    }
+    resize();
+    setInterval(resize, 1000);  
     </script>
 <script>
 function getMinWidth() {
