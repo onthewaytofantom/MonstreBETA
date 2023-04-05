@@ -127,8 +127,9 @@ function resize(){
         
 
         const myDiv = document.getElementById('myDiv');
-        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio+" canvashight:"+ mainCanvas.style.height+
-        " DW:"+Heightoffset;
+  //      myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio+" canvashight:"+ mainCanvas.style.height+
+  //      " DW:"+Heightoffset;
+        myDiv.textContent = "openALPHA - expect bugs.";
         myDiv.style.height = Heightoffset +'px';
 
       //remove fullscreen mode for Mobile since the size will be wrong.
@@ -166,7 +167,8 @@ function resize(){
         mainCanvas.style.width = maxWidth-177+'px';
         mainCanvas.style.height = windowHeight-100+'px';
         const myDiv = document.getElementById('myDiv');
-        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio;
+        //myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio;
+        myDiv.textContent = "openALPHA - expect bugs. Next ClosedBETA(whitelist) expect Jun 2023";
       }
     }
     resize();
