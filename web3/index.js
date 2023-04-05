@@ -267,7 +267,7 @@ async function sendContract(method, abi, contract, args, value, gasLimit, gasPri
                                                     String(receipt.events.Result.returnValues.opponOrAfter));
           }
           catch{
-            window.unityInstance.SendMessage("JavascriptBridgeManager", "PVEReveal");
+            window.unityInstance.SendMessage("JavascriptBridgeManager", "PVEReveal", "");
           }
         }
         else if ( method == "trainsMonstre"){
