@@ -41,21 +41,21 @@
       </p>
     </div>
   -->
-  <div id="myDiv"style=" background-color: rgb(154, 134, 1); text-align: left;" ></div>
-    <div id="main" class="unity-desktop" style="text-align: center; background-color: rgb(204, 134, 48); overflow-x: hidden;">
-      <canvas id="unity-canvas" style="border:1px solid #e61010;"></canvas>
+  <div id="myDiv"style=" background-color: rgb(20, 20, 20); text-align: left;" ></div>
+    <div id="main" class="unity-desktop" style="text-align: center; background-color: rgb(15, 15, 15); overflow-x: hidden;">
+      <canvas id="unity-canvas" style="border:1px solid #4b4949;"></canvas>
 
-      <div id="unity-loading-bar"style=" background-color: blue;">
-        <div id="unity-logo"style=" background-color: white;"></div>
-        <div id="unity-progress-bar-empty"style=" background-color: rgb(111, 134, 48);">
-          <div id="unity-progress-bar-full"style=" background-color: rgb(55, 134, 48);"></div>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"style=" background-color: rgb(204, 134, 48);"> </div>
-      <div id="unity-footer"style=" background-color: green;">
-        <div id="unity-webgl-logo"style=" background-color: rgb(111, 255, 255);"></div>
-        <div id="unity-fullscreen-button"style=" background-color: yellow;"></div>
-        <div id="unity-build-title"style=" background-color: red;">FantomMonstre</div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">FantomMonstre</div>
       </div>
     </div>
     <script>
@@ -109,8 +109,7 @@ function resize(){
           newCanvasHeight = maxHeight;
           newCanvasWidth = newCanvasHeight * canvasAspectRatio;
         }
-        var WWIDTH = document.body.offsetWidth;
-        var HHEIGHT = WWIDTH/1.777778;
+       
         // Set the new width and height of the canvas
         //body.style.width = 1280/ pixelRatio+'px';
         mainCanvas.style.width = 1280/ pixelRatio+'px';
@@ -118,11 +117,18 @@ function resize(){
         
         document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + 1280/ pixelRatio + 'px, initial-scale='+1);
         document.body.style.zoom = (1280/ pixelRatio)/window.innerWidth*100 + "%";
+        
+        if (document.getElementById("main").clientHeight < window.innerHeight) {
+          var Heightoffset=(window.innerHeight-document.getElementById("main").clientHeight)/2;
+        } else {
+          var Heightoffset=0;
+        }
+        
 
         const myDiv = document.getElementById('myDiv');
-        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio+" body:"+ document.body.offsetWidth+
-        " DW:"+initwidth;
-        myDiv.style.height = (window.innerHeight-minCanvasHeight)/2/pixelRatio+'px';
+        myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio+" canvashight:"+ mainCanvas.style.height+
+        " DW:"+Heightoffset;
+        myDiv.style.height = Heightoffset +'px';
 
 
 
@@ -161,7 +167,7 @@ function resize(){
       }
     }
     resize();
-    setInterval(resize, 1000);  
+    //setInterval(resize, 1000);  
     </script>
 <script>
 function getMinWidth() {
