@@ -43,7 +43,7 @@
   -->
   <div id="myDiv"style=" background-color: rgb(20, 20, 20); text-align: left;" ></div>
     <div id="main" class="unity-desktop" style="text-align: center; background-color: rgb(15, 15, 15); overflow-x: hidden;">
-      <canvas id="unity-canvas" style="border:1px solid #4b4949;"></canvas>
+      <canvas id="unity-canvas" style="border:0px solid #4b4949;"></canvas>
 
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -268,7 +268,7 @@ document.getElementById("rotateButton").addEventListener("click", function() {
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          //progressBarFull.style.width = 100 * progress + "%";
+          progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
