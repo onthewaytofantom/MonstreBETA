@@ -141,9 +141,9 @@ function resize(){
         mainDiv.style.textAlign = "center";
         
         const minCanvasWidth = 1280/ pixelRatio;
-        const maxCanvasWidth = 1920/ pixelRatio;
+        const maxCanvasWidth = 1280/ pixelRatio;
         const minCanvasHeight = 720/ pixelRatio;
-        const maxCanvasHeight = 1080/ pixelRatio;
+        const maxCanvasHeight = 720/ pixelRatio;
         // Get the width and height of the browser window
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
@@ -164,8 +164,8 @@ function resize(){
         }
 
         // Set the new width and height of the canvas
-        mainCanvas.style.width = maxWidth-177+'px';
-        mainCanvas.style.height = windowHeight-100+'px';
+        mainCanvas.style.width = maxWidth+'px';
+        mainCanvas.style.height = maxHeight+'px';
         const myDiv = document.getElementById('myDiv');
         //myDiv.textContent = window.innerWidth+"x"+window.innerHeight+"PR="+window.devicePixelRatio;
         myDiv.textContent = "openALPHA - expect bugs. Next ClosedBETA(whitelist) expect Jun 2023";
