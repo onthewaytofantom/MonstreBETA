@@ -13,8 +13,19 @@
 
     <script>
       function clearCache() {
-                  localStorage.clear();
-                  sessionStorage.clear();
+              o = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+              var t = {
+                name: "UnityCache",
+                version: 3
+              }
+              var n = o.deleteDatabase(t.name);
+              n.onsuccess = function() {
+                alert("onsuccess!");
+              }, n.onerror = function() {
+                alert("onerror!");
+              }, n.onblocked = function() {
+                alert("onblocked!");
+              }
                   alert("Cache cleared successfully!");
       }
     </script>
