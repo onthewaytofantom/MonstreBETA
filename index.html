@@ -14,19 +14,10 @@
     <script>
       function clearCache() {
               o = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-              var t = {
-                name: "UnityCache",
-                version: 3
-              }
-              var n = o.deleteDatabase(t.name);
-              n.onsuccess = function() {
-                alert("onsuccess!");
-              }, n.onerror = function() {
-                alert("onerror!");
-              }, n.onblocked = function() {
-                alert("onblocked!");
-              }
-                  alert("Cache cleared successfully!");
+              var t = {name: "UnityCache",version: 3}
+              o.deleteDatabase(t.name);
+              location.reload();
+              alert("Cache cleared successfully!");
       }
     </script>
 
