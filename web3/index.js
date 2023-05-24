@@ -234,7 +234,7 @@ async function sendContract(method, abi, contract, args, value, gasLimit, gasPri
           // showDiffMon(Monstre,receipt.events.Result.returnValues.selfOrBefore);
           console.log(receipt.events.Result.returnValues.opponOrAfter);
           window.unityInstance.SendMessage("JavascriptBridgeManager",
-                                            "BattleRythm", 
+                                            "BattleResult", 
                                               String(receipt.events.Result.returnValues.won) + "+" +
                                                String(receipt.events.Result.returnValues.hash) + "+" +
                                                 String(receipt.events.Result.returnValues.bit) + "+" +
@@ -251,13 +251,24 @@ async function sendContract(method, abi, contract, args, value, gasLimit, gasPri
                                                   String(receipt.events.Result.returnValues.opponOrAfter));
         }
         else if ( method == "BattleEthermonstre"){
-          window.unityInstance.SendMessage("JavascriptBridgeManager",
-                                            "PVEResult", 
-                                              String(receipt.events.Result.returnValues.won) + "+" +
-                                               String(receipt.events.Result.returnValues.hash) + "+" +
-                                                String(receipt.events.Result.returnValues.bit) + "+" +
-                                                 String(receipt.events.Result.returnValues.selfOrBefore) + "+" +
-                                                  String(receipt.events.Result.returnValues.opponOrAfter));
+          console.log("method == BattleEthermonstre");
+          try {
+            console.log(receipt.events.Result.returnValues.won);
+            console.log(receipt.events.Result.returnValues.hash);
+            console.log(receipt.events.Result.returnValues.bit);
+            console.log(receipt.events.Result.returnValues.selfOrBefore);
+            console.log(receipt.events.Result.returnValues.opponOrAfter);
+            window.unityInstance.SendMessage("JavascriptBridgeManager",
+                                              "PVEResult", 
+                                                String(receipt.events.Result.returnValues.won) + "+" +
+                                                 String(receipt.events.Result.returnValues.hash) + "+" +
+                                                  String(receipt.events.Result.returnValues.bit) + "+" +
+                                                   String(receipt.events.Result.returnValues.selfOrBefore) + "+" +
+                                                    String(receipt.events.Result.returnValues.opponOrAfter));
+          }
+          catch{
+            window.unityInstance.SendMessage("JavascriptBridgeManager", "PVEReveal", "");
+          }
         }
         else if ( method == "trainsMonstre"){
           window.unityInstance.SendMessage("JavascriptBridgeManager",
