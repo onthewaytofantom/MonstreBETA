@@ -7,10 +7,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  <body style="background-color: rgb(0, 0, 0); color: goldenrod; ">
+  <body>
     
-    <div id="tutorial" style="width:50px">
-      <p>    This is Alpha Version v1.0.10. For more stable experience, please use Text Base UI. When encounter bug, refresh webpage. https://onthewaytofantom.github.io/MonstreTest/
+    <div id="tutorial">
+      <p class="text">    This is Alpha Version v1.0.6. For more stable experience, please use Text Base UI. When encounter bug, refresh webpage.
         <br>
         <br>    New Player Guide:
         <br>    1. Mint an Egg 
@@ -37,7 +37,7 @@
     </div>
 
 
-    <div id="unity-container" class="unity-desktop" >
+    <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -86,11 +86,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build11.loader.js";
+      var loaderUrl = buildUrl + "/Build10.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build11.data",
-        frameworkUrl: buildUrl + "/Build11.framework.js",
-        codeUrl: buildUrl + "/Build11.wasm",
+        dataUrl: buildUrl + "/Build10.data",
+        frameworkUrl: buildUrl + "/Build10.framework.js",
+        codeUrl: buildUrl + "/Build10.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "FantomMonstre",
@@ -110,9 +110,7 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
-        unityShowBanner('WebGL works wierd in Mobile Device');
-       
-      
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         canvas.style.width = "1280px";
         canvas.style.height = "720px";
@@ -135,23 +133,6 @@
         });
       };
       document.body.appendChild(script);
-    </script>
-    <script>
-      // Get references to the target elements
-      const tutorialDiv = document.getElementById('tutorial');
-      const unityContainer = document.getElementById('unity-canvas');
-      
-      // Calculate the width of the browser viewport
-      const viewportWidth = window.innerWidth;
-      
-      // Get the width of the unity container
-      const unityContainerWidth = unityContainer.offsetWidth;
-      
-      // Calculate the width of the target div
-      const targetDivWidth = (viewportWidth - unityContainerWidth)/2;
-      
-      // Set the width of the target div
-      tutorialDiv.style.width = `${targetDivWidth}px`;
     </script>
   </body>
 </html>
